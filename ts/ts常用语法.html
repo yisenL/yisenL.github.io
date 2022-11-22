@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ts常用语法 | 小明同学</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/assets/imgs/logo.jpg">
+    <meta name="description" content="我的个人网站">
+    
+    <link rel="preload" href="/assets/css/0.styles.9825735b.css" as="style"><link rel="preload" href="/assets/js/app.8bb0a0d9.js" as="script"><link rel="preload" href="/assets/js/2.cbbe38b2.js" as="script"><link rel="preload" href="/assets/js/12.889c43c9.js" as="script"><link rel="prefetch" href="/assets/js/10.03d9276b.js"><link rel="prefetch" href="/assets/js/11.6b50eccb.js"><link rel="prefetch" href="/assets/js/13.c0fb6331.js"><link rel="prefetch" href="/assets/js/3.ab767734.js"><link rel="prefetch" href="/assets/js/4.81e283e3.js"><link rel="prefetch" href="/assets/js/5.4c0a2c22.js"><link rel="prefetch" href="/assets/js/6.ef7c67b3.js"><link rel="prefetch" href="/assets/js/7.be8c4183.js"><link rel="prefetch" href="/assets/js/8.e2671702.js"><link rel="prefetch" href="/assets/js/9.573f4007.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9825735b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/imgs/logo.jpg" alt="小明同学" class="logo"> <span class="site-name can-hide">小明同学</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CSS基础</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JS基础</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>TS</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/ts/ts常用语法.html" class="active sidebar-link">ts常用语法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/ts/ts常用语法.html#keyof-和-in" class="sidebar-link">keyof 和 in</a></li><li class="sidebar-sub-header"><a href="/ts/ts常用语法.html#required-partial" class="sidebar-link">Required &amp; Partial</a></li><li class="sidebar-sub-header"><a href="/ts/ts常用语法.html#pick-omit" class="sidebar-link">Pick &amp; Omit</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>VueJs</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ReactJs</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="ts常用语法"><a href="#ts常用语法" class="header-anchor">#</a> ts常用语法</h1> <h2 id="keyof-和-in"><a href="#keyof-和-in" class="header-anchor">#</a> keyof 和 in</h2> <h3 id="keyof-获取-interface-的键"><a href="#keyof-获取-interface-的键" class="header-anchor">#</a> keyof：获取 interface 的键</h3> <div class="language- extra-class"><pre><code>用法：
+interface Point {
+  x: number;
+  y: number;
+}
+
+type keys = keyof Point;
+// type keys = &quot;x&quot; | &quot;y&quot;
+</code></pre></div><h3 id="in-遍历枚举类型"><a href="#in-遍历枚举类型" class="header-anchor">#</a> in：遍历枚举类型</h3> <div class="language- extra-class"><pre><code>用法：
+type Keys = &quot;a&quot; | &quot;b&quot;
+type Obj =  {
+  [p in Keys]: any
+} // -&gt; { a: any, b: any }
+</code></pre></div><h2 id="required-partial"><a href="#required-partial" class="header-anchor">#</a> Required &amp; Partial</h2> <h3 id="required-将类型中所有选项变为必选-去除所有"><a href="#required-将类型中所有选项变为必选-去除所有" class="header-anchor">#</a> Required：将类型中所有选项变为必选，去除所有？</h3> <div class="language- extra-class"><pre><code>type Required&lt;T&gt; = {
+  [P in keyof T]-?: T[P];
+};
+
+用法：
+interface RequiredContact= Required&lt;Contact&gt;
+</code></pre></div><h3 id="partial-将类型中所有选项变为可选-即加上"><a href="#partial-将类型中所有选项变为可选-即加上" class="header-anchor">#</a> Partial：将类型中所有选项变为可选，即加上？</h3> <div class="language- extra-class"><pre><code>type Partial&lt;T&gt; = { [P in keyof T]?: T[P] };
+上面语句的意思是 keyof T 拿到 T 所有属性名，然后 in 进行遍历，将值赋给 P，最后 T[P] 取得相应属性的值
+
+用法：
+interface PartialContact= Partial&lt;Contact&gt;
+</code></pre></div><h2 id="pick-omit"><a href="#pick-omit" class="header-anchor">#</a> Pick &amp; Omit</h2> <h3 id="pick-选择其中属性"><a href="#pick-选择其中属性" class="header-anchor">#</a> Pick：选择其中属性</h3> <div class="language- extra-class"><pre><code>type Pick&lt;T, K extends keyof T&gt; = {
+    [P in K]: T[P];
+};
+
+用法：
+interface ContactPick extends Pick&lt;Contact, 'name' | 'phone'&gt; {}
+type ProduceParams = Pick&lt;MemberListParams, 'productName' | 'productSku'&gt;
+</code></pre></div><h3 id="omit-剔除其中属性"><a href="#omit-剔除其中属性" class="header-anchor">#</a> Omit：剔除其中属性</h3> <div class="language- extra-class"><pre><code>type Omit&lt;T, K extends keyof any&gt; = Pick&lt;T, Exclude&lt;keyof T, K&gt;&gt;
+
+用法：
+type OmitEmailContact = Omit&lt;Contact, 'email' | 'phone'&gt;
+interface ContactPick extends Omit&lt;Contact, 'name' | 'phone'&gt; {}
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/js/数组.html" class="prev">
+        数组
+      </a></span> <span class="next"><a href="/vue/vue.html">
+        Vue.js
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.8bb0a0d9.js" defer></script><script src="/assets/js/2.cbbe38b2.js" defer></script><script src="/assets/js/12.889c43c9.js" defer></script>
+  </body>
+</html>
